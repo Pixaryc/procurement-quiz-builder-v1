@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>政府採購法 · 重複錯題訂正手冊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F2EC; --paper-2:#EDEAE1; --ink:#1C2620; --ink-soft:#3A443D;
+    --seal:#B0392E; --seal-deep:#8E2C23; --forest:#1E3A30; --forest-soft:#2C5347;
+    --correct:#1F7A52; --correct-bg:#E7F2EA; --muted:#787268; --line:#DAD6CC;
+    --line-soft:#E6E2D8; --shadow:0 1px 2px rgba(28,38,32,.06),0 6px 20px rgba(28,38,32,.05);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    background:var(--paper);color:var(--ink);line-height:1.75;-webkit-font-smoothing:antialiased;padding-bottom:80px;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px;}
+
+  header.hero{border-bottom:2px solid var(--ink);padding:46px 0 30px;}
+  .kicker{font-family:"Noto Serif TC",serif;letter-spacing:.34em;font-size:12px;color:var(--seal);
+    font-weight:600;display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+  .kicker::before{content:"";width:30px;height:2px;background:var(--seal);display:inline-block;}
+  h1.title{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(30px,6vw,46px);
+    line-height:1.12;letter-spacing:.01em;color:var(--ink);}
+  h1.title .accent{color:var(--seal);}
+  .lede{margin-top:16px;font-size:15.5px;color:var(--ink-soft);max-width:62ch;}
+  .lede b{color:var(--seal-deep);font-weight:700;}
+  .stat-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .stat{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 15px;
+    display:flex;align-items:baseline;gap:8px;box-shadow:var(--shadow);}
+  .stat .n{font-family:"Noto Serif TC",serif;font-weight:700;font-size:20px;color:var(--forest);}
+  .stat .l{font-size:12.5px;color:var(--muted);}
+
+  .toolbar{position:sticky;top:0;z-index:40;background:rgba(244,242,236,.93);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .toolbar-inner{max-width:880px;margin:0 auto;padding:11px 22px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;}
+  .progress-tag{font-size:13px;color:var(--ink-soft);font-weight:500;display:flex;align-items:center;gap:8px;margin-right:auto;}
+  .progress-bar{width:90px;height:6px;border-radius:6px;background:var(--line);overflow:hidden;}
+  .progress-fill{height:100%;width:0;background:var(--correct);transition:width .35s ease;}
+  .btn{font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--line);
+    background:#fff;color:var(--ink);padding:7px 13px;border-radius:8px;transition:all .15s ease;
+    display:inline-flex;align-items:center;gap:6px;}
+  .btn:hover{border-color:var(--forest-soft);color:var(--forest);}
+  .btn.active{background:var(--forest);color:#fff;border-color:var(--forest);}
+  .btn .dot{width:7px;height:7px;border-radius:50%;background:var(--muted);}
+  .btn.active .dot{background:#fff;}
+
+  nav.chips{padding:22px 0 4px;}
+  .chips-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{font-size:13px;text-decoration:none;color:var(--ink-soft);border:1px solid var(--line);
+    background:#fff;border-radius:30px;padding:6px 14px;transition:all .15s ease;font-weight:500;}
+  .chip:hover{background:var(--forest);color:#fff;border-color:var(--forest);}
+  .chip b{color:var(--seal);font-weight:700;margin-left:4px;}
+  .chip:hover b{color:#fff;}
+
+  .chapter{padding-top:40px;scroll-margin-top:70px;}
+  .chapter-head{display:flex;align-items:flex-end;gap:14px;border-bottom:2px solid var(--forest);
+    padding-bottom:10px;margin-bottom:6px;}
+  .chapter-num{font-family:"Noto Serif TC",serif;font-weight:900;font-size:34px;color:var(--paper);
+    background:var(--forest);width:52px;height:52px;border-radius:10px;display:flex;align-items:center;
+    justify-content:center;flex-shrink:0;line-height:1;}
+  .chapter-title{font-family:"Noto Serif TC",serif;font-weight:700;font-size:23px;color:var(--forest);}
+  .chapter-meta{font-size:13px;color:var(--muted);margin-bottom:3px;}
+
+  .group{margin-top:30px;scroll-margin-top:70px;}
+  .group-label{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+  .group-label h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:18px;color:var(--ink);}
+  .law-tag{font-size:12px;font-weight:700;color:var(--forest-soft);border:1px solid var(--forest-soft);
+    border-radius:6px;padding:2px 9px;background:rgba(44,83,71,.06);white-space:nowrap;}
+  .memo{background:#fff;border:1px solid var(--line);border-left:4px solid var(--seal);border-radius:8px;
+    padding:16px 18px;margin-bottom:16px;box-shadow:var(--shadow);}
+  .memo-title{font-family:"Noto Serif TC",serif;font-weight:700;font-size:13.5px;color:var(--seal-deep);
+    letter-spacing:.16em;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .memo-title::before{content:"\270E";font-size:15px;}
+  .memo ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+  .memo li{position:relative;padding-left:18px;font-size:14.5px;color:var(--ink-soft);}
+  .memo li::before{content:"\25AA";color:var(--seal);position:absolute;left:2px;top:0;}
+  .memo li b{color:var(--seal-deep);font-weight:700;}
+  .memo p{font-size:14px;color:var(--ink-soft);}
+  .memo .keynum{font-family:"Noto Serif TC",serif;font-weight:700;color:var(--forest);
+    background:var(--correct-bg);border-radius:5px;padding:0 6px;}
+  .memo table{border-collapse:collapse;width:100%;margin-top:6px;font-size:13.5px;}
+  .memo th,.memo td{border:1px solid var(--line);padding:6px 9px;text-align:center;}
+  .memo th{background:var(--forest);color:#fff;font-weight:500;}
+  .memo td:first-child{text-align:left;color:var(--ink-soft);background:var(--paper-2);font-weight:500;}
+  .memo td b{color:var(--seal-deep);}
+
+  .q{background:#fff;border:1px solid var(--line);border-radius:11px;margin-bottom:13px;overflow:hidden;
+    box-shadow:var(--shadow);transition:border-color .2s ease,opacity .2s ease;scroll-margin-top:72px;}
+  .q.mastered{opacity:.62;border-color:var(--correct);}
+  .q-top{display:flex;align-items:flex-start;gap:12px;padding:15px 16px 12px;}
+  .q-badge{font-family:"Noto Serif TC",serif;font-weight:700;font-size:13px;color:#fff;background:var(--seal);
+    border-radius:7px;padding:4px 9px;flex-shrink:0;line-height:1.3;text-align:center;min-width:54px;}
+  .q-badge small{display:block;font-size:9.5px;font-weight:500;opacity:.85;letter-spacing:.05em;}
+  .q-stem{font-size:15px;font-weight:500;color:var(--ink);flex:1;padding-top:1px;}
+  .q-mark{flex-shrink:0;cursor:pointer;border:1px solid var(--line);background:var(--paper);width:30px;height:30px;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted);transition:all .15s ease;}
+  .q-mark:hover{border-color:var(--correct);color:var(--correct);}
+  .q.mastered .q-mark{background:var(--correct);color:#fff;border-color:var(--correct);}
+
+  .q-options{list-style:none;padding:0 16px 4px 16px;display:flex;flex-direction:column;gap:6px;}
+  .opt{display:flex;gap:9px;align-items:flex-start;padding:8px 11px;border-radius:7px;font-size:14px;
+    color:var(--ink);border:1px solid var(--correct);background:var(--correct-bg);font-weight:500;}
+  .opt.wrong{border-color:transparent;background:var(--paper);color:var(--ink-soft);font-weight:400;}
+  .opt .onum{font-weight:700;font-family:"Noto Serif TC",serif;color:var(--correct);flex-shrink:0;}
+  .opt.wrong .onum{color:var(--muted);}
+  .opt.correct::after{content:"✓ 正解";margin-left:auto;color:var(--correct);font-weight:700;
+    font-size:12.5px;flex-shrink:0;align-self:center;white-space:nowrap;}
+
+  .q-foot{padding:0 16px 16px;}
+  .explain{background:var(--paper-2);border-radius:8px;padding:13px 15px;margin-top:6px;border-left:3px solid var(--forest-soft);}
+  .explain .e-title{font-weight:700;font-size:12.5px;color:var(--forest);letter-spacing:.1em;margin-bottom:6px;font-family:"Noto Serif TC",serif;}
+  .explain p{font-size:14px;color:var(--ink-soft);}
+  .explain .ans-hl{color:var(--correct);font-weight:700;}
+  .trap{margin-top:9px;font-size:13.5px;color:var(--seal-deep);background:rgba(176,57,46,.06);
+    border:1px dashed rgba(176,57,46,.4);border-radius:7px;padding:9px 12px;}
+  .trap b{font-family:"Noto Serif TC",serif;letter-spacing:.08em;}
+  .mem{margin-top:9px;font-size:13.5px;color:var(--forest);display:flex;gap:7px;align-items:baseline;}
+  .mem b{font-family:"Noto Serif TC",serif;letter-spacing:.08em;color:var(--forest-soft);flex-shrink:0;}
+
+  .reveal-zone{display:none;padding:0 16px 16px;}
+  .show-answer-btn{width:100%;border:1px dashed var(--line);background:var(--paper);color:var(--muted);
+    font-family:inherit;font-size:13px;cursor:pointer;padding:10px;border-radius:8px;transition:all .15s ease;}
+  .show-answer-btn:hover{border-color:var(--forest-soft);color:var(--forest);}
+
+  /* === 自測模式：未揭曉時隱藏答案與解析 === */
+  body.selftest .q:not(.reveal) .opt{background:var(--paper);border-color:transparent;color:var(--ink-soft);font-weight:400;}
+  body.selftest .q:not(.reveal) .opt .onum{color:var(--muted);}
+  body.selftest .q:not(.reveal) .opt.correct::after{content:none;}
+  body.selftest .q:not(.reveal) .q-foot{display:none;}
+  body.selftest .q:not(.reveal) .reveal-zone{display:block;}
+
+  footer{margin-top:54px;border-top:2px solid var(--ink);padding-top:22px;font-size:13px;color:var(--muted);text-align:center;line-height:1.9;}
+  footer .seal-mark{font-family:"Noto Serif TC",serif;color:var(--seal);font-weight:700;border:2px solid var(--seal);
+    border-radius:8px;display:inline-block;padding:4px 12px;letter-spacing:.2em;margin-bottom:10px;transform:rotate(-3deg);}
+  @media(max-width:560px){
+    .chapter-num{width:44px;height:44px;font-size:27px;}
+    .chapter-title{font-size:19px;}
+    .q-stem{font-size:14.5px;}
+    .opt.correct::after{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important;}}
+  :focus-visible{outline:2.5px solid var(--seal);outline-offset:2px;border-radius:4px;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">政府採購法 · 考前衝刺</div>
+    <h1 class="title">重複錯題<span class="accent">訂正手冊</span></h1>
+    <p class="lede">這本手冊只收錄你<b>兩次測驗都答錯</b>的題目——這些才是真正該補的破口。題目與選項皆照原考題，正解已標出，每題附陷阱分析與記憶口訣。最大宗的弱點是總則篇的 <b>等標期（第28條）</b> 與 <b>廠商資格（第36條）</b>，已整理成速記表。建議先開「自測模式」遮答案自我檢測，掌握的題目按右側圈圈打勾。</p>
+    <div class="stat-row">
+      <div class="stat"><span class="n">53</span><span class="l">重複錯題</span></div>
+      <div class="stat"><span class="n">4</span><span class="l">大章節</span></div>
+      <div class="stat"><span class="n">28・36</span><span class="l">最該攻克的法條</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <span class="progress-tag">已掌握 <span id="pcount">0</span>/53
+      <span class="progress-bar"><span class="progress-fill" id="pfill"></span></span>
+    </span>
+    <button class="btn" id="selftestBtn"><span class="dot"></span>自測模式</button>
+    <button class="btn" id="resetBtn">重設進度</button>
+  </div>
+</div>
+
+<nav class="chips wrap"><div class="chips-row" id="chipsRow"></div></nav>
+<main class="wrap" id="content"></main>
+
+<footer class="wrap">
+  <div class="seal-mark">訂正・必勝</div>
+  <div>本手冊依你提供的兩次測驗錯題清單交叉比對而成，僅收錄「兩次皆錯」者。<br>條號與法規辦法名稱皆依考題標示；考前以正解與口訣為主，細部爭點題不必過度推敲。</div>
+</footer>
+
+<script>
+const DATA = [
+{
+  id:"ch1", num:"壹", chapter:"履約管理及驗收", meta:"重複錯題 2 題 · 驗收與付款程序",
+  groups:[
+    {
+      topic:"驗收人員與工程付款審核", law:"第71・73條",
+      memo:`<ul>
+        <li>驗收人員迴避：該採購案件<b>最基層之承辦人員</b>不得當主驗人或檢驗人；但總務、需求單位人員、採購單位<b>主管</b>都可以。</li>
+        <li>無初驗程序：接獲備驗通知後 <span class="keynum">30 日</span> 內辦理驗收。</li>
+        <li>工程付款口訣：<b>驗收後 15 日付款</b>、<b>估驗/分階段付款提證明後 15 日完成審核</b>、<b>澄清補正不得逾 1 次</b>，且機關「<b>得</b>」於契約另為約定。</li>
+      </ul>`,
+      qs:[
+        {n:8,law:"第71條",stem:"下列何者不得為所辦採購之主驗人或樣品及材料之檢驗人？",
+         opts:["機關總務人員","該採購案件最基層之承辦人員","需求單位人員","承辦採購單位之主管"],a:1,
+         ex:`為避免最末端承辦人「自辦自驗」，<span class="ans-hl">最基層之承辦人員</span>不得擔任主驗人或檢驗人。總務、需求單位人員、採購單位主管均無此限。`,
+         trap:`直覺以為要迴避的是「主管」，其實要迴避的是「最基層承辦人員」。`},
+        {n:13,law:"第73條",stem:"依採購法規定，機關辦理工程採購之付款及審核程序，下列何者有誤？",
+         opts:["驗收付款者，機關應於接到廠商請款單據後15日內付款","機關應在廠商提出文件及付款單據後，如發現文件不符、不足或有疑義者，通知廠商澄清或補正之次數不得超過1次","機關不得於契約另為約定","定期估驗或分階段付款者，機關應於廠商提出估驗或階段完成之證明文件後15日內完成審核程序"],a:2,
+         ex:`(3) 為「有誤」。付款期限（15 日付款、審核、補正 1 次）屬<span class="ans-hl">原則性規定，機關「得」於契約另為約定</span>，並非「不得」。其餘 (1)(2)(4) 均為正確法定期限。`,
+         mem:`工程付款＝「15 日、15 日、補正 1 次」，且契約可另行約定。`}
+      ]
+    }
+  ]
+},
+{
+  id:"ch5", num:"貳", chapter:"罰則及附則", meta:"重複錯題 4 題 · 評選委員會 / 環保採購 / 異議申訴",
+  groups:[
+    {
+      topic:"採購評選委員會", law:"第94條",
+      memo:`<ul>
+        <li>委員至少 <span class="keynum">5 人</span>，<b>無上限</b>。</li>
+        <li>專家學者<b>不得少於 1/3</b>，且<b>至少 2 人</b>。</li>
+        <li>開會：委員總額 <span class="keynum">1/2 以上出席</span>，出席委員<b>過半數</b>同意決議。</li>
+        <li>委員須<b>親自</b>為之（評選＋出席會議都不得代理）。</li>
+      </ul>`,
+      qs:[
+        {n:9,law:"第94條",stem:"採購評選委員會會議，應有委員總額多少以上人員出席，其決議應經出席委員過半數之同意行之？",
+         opts:["二分之一","三分之二","四分之三","三分之一"],a:0,
+         ex:`會議須<span class="ans-hl">委員總額 1/2 以上</span>出席，並經<span class="ans-hl">出席委員過半數</span>同意。注意兩個門檻：出席要 1/2、同意要過半。`,
+         trap:`別跟「專家學者不得少於 1/3、至少 2 人」混淆——那是委員「組成」規定，不是「出席」門檻。`}
+      ]
+    },
+    {
+      topic:"優先採購環保產品", law:"第96條",
+      memo:`<ul>
+        <li>優先標的：取得政府認可<b>環保標章</b>、效能相同或相似之產品。</li>
+        <li>價差優惠比率由機關訂定，但<b>不得逾 10%</b>。</li>
+        <li>認定機關＝<b>相關目的事業主管機關</b>（不是環境部、不是經濟部）。</li>
+        <li>履約期間未依約提供時，機關得：終止契約、追償價差優惠損失、依 101 條辦理。</li>
+      </ul>`,
+      qs:[
+        {n:24,law:"第96條",stem:"機關依採購法第96條第1項優先採購環保產品，應於招標文件規定以環保產品得標之廠商於履約期間未依契約規定提供該產品時，機關得採行之措施，下列何者為非？",
+         opts:["終止契約","追償價差優惠損失","依採購法第101條規定辦理","押標金不予發還"],a:3,
+         ex:`(4) 為非。押標金是「<span class="ans-hl">投標階段</span>」的擔保，決標後即發還；履約期間未依約提供環保產品屬「履約違約」，與押標金無關。`,
+         mem:`押標金＝投標階段；履約違約用「終止契約／追償／101 條」。`},
+        {n:26,law:"第96條",stem:"採購法第96條第2項所稱增加社會利益或減少社會成本之產品，指該產品經下列何機關認定符合此等條件，並發給證明文件者？",
+         opts:["採購法主管機關","環境部","相關目的事業主管機關","經濟部"],a:2,
+         ex:`認定機關是<span class="ans-hl">相關目的事業主管機關</span>，依產品性質而定，而非統一由環境部或經濟部認定。`,
+         trap:`看到「環保」直覺選環境部，但法條明定是「相關目的事業主管機關」。`}
+      ]
+    },
+    {
+      topic:"異議與申訴期間", law:"第102條",
+      memo:`<ul>
+        <li>機關依 101 條通知 → 廠商認違法/不實，得於<b>接獲通知次日起 <span class="keynum">20 日</span></b>內，向<b>招標機關</b>提出異議。</li>
+        <li>對異議處理結果不服 → <b>收受結果次日起 <span class="keynum">15 日</span></b>內，向<b>採購申訴審議委員會</b>提出申訴。</li>
+        <li>口訣：<b>異議 20 日（向機關）、申訴 15 日（向申訴會）</b>。</li>
+      </ul>`,
+      qs:[
+        {n:32,law:"第102條",stem:"機關依採購法第101條規定將其事實及理由通知廠商時，應附記廠商如認為機關所為之通知違反採購法或不實者，得於接獲通知之次日起幾日內，以書面向招標機關提出異議；未提出異議者，將刊登政府採購公報？",
+         opts:["15日","20日","10日","30日"],a:1,
+         ex:`對 101 條通知的異議期間為<span class="ans-hl">接獲通知次日起 20 日</span>，向「招標機關」提出。`,
+         trap:`容易和後續「申訴 15 日」混淆。第一關「異議＝20 日」。`}
+      ]
+    }
+  ]
+},
+{
+  id:"ch8", num:"參", chapter:"全生命週期概論", meta:"重複錯題 2 題 · 工程實務數字",
+  groups:[
+    {
+      topic:"工程採購關鍵數字", law:"工程實務",
+      memo:`<ul>
+        <li>估驗保留款：每期估驗款扣 <span class="keynum">5%</span>（契約另有約定除外）。</li>
+        <li>替選方案評估門檻：基本設計工程建造經費達 <span class="keynum">10 億元</span>，應辦替選方案評估並納為必要圖說。</li>
+      </ul>`,
+      qs:[
+        {n:1,law:"估驗計價",stem:"機關辦理工程採購估驗計價，除契約另有約定，一般每期估驗款須扣除多少百分比之保留款？",
+         opts:["3%","5%","6%","7%"],a:1,
+         ex:`一般每期估驗款扣 <span class="ans-hl">5%</span> 作保留款，俟驗收後依約發還。`,
+         mem:`保留款＝5%。`},
+        {n:15,law:"審議要點",stem:"依政府公共工程計畫與經費審議作業要點基本設計階段之必要圖說規定，機關當次送審基本設計之工程建造經費達新臺幣多少時，應辦理替選方案評估，並將替選方案評估報告納為必要圖說文件？",
+         opts:["10億元","4億元","1億元","5千萬元"],a:0,
+         ex:`當次送審基本設計工程建造經費達 <span class="ans-hl">10 億元</span>，須辦理替選方案評估。`,
+         mem:`替選方案門檻＝10 億。`}
+      ]
+    }
+  ]
+},
+{
+  id:"ch11", num:"肆", chapter:"總則、招標及決標", meta:"重複錯題 45 題 · 你的主戰場",
+  groups:[
+    {
+      topic:"補助採購", law:"第4條",
+      memo:`<ul>
+        <li>法人/團體受補助辦理採購，補助金額<b>占採購金額半數以上</b>且<b>達公告金額以上</b> → 適用採購法。</li>
+        <li>監督機關＝<b>補助機關本身</b>（不是補助機關的「上級機關」）。</li>
+        <li>多機關補助：以補助<b>總金額</b>計；依指定代表機關或補助比率最高者認定。</li>
+      </ul>`,
+      qs:[
+        {n:6,law:"第4條",stem:"法人或團體接受機關補助辦理採購，其適用採購法者，下列敘述何者有誤？",
+         opts:["受補助者於辦理查核金額以上採購之開標，應受補助機關之上級機關監督","於2以上機關補助同一採購者，其補助金額是否達第4條第1項所定金額，以其補助總金額計算之","受理申訴之採購申訴審議委員會，為補助機關自行辦理採購之申訴之採購申訴審議委員會","有2以上機關補助同一採購者，受理申訴之採購申訴審議委員會，依指定代表機關或所占補助金額比率最高者認定之"],a:0,
+         ex:`(1) 有誤。受補助者辦理採購的監督機關是<span class="ans-hl">補助機關本身</span>，而非「補助機關之上級機關」。`,
+         trap:`多了「上級」二字就是錯——直接受「補助機關」監督。`}
+      ]
+    },
+    {
+      topic:"公平合理原則", law:"第6條",
+      memo:`<ul>
+        <li>採購人員<b>不得</b>基於公益為「違反採購法」之決定（公益不能凌駕法律）。</li>
+        <li>違反態樣：限制與履約能力無關的條件、指定不必要廠牌/在地經驗。</li>
+        <li>關鍵判準：因<b>廠商自身事由</b>（如財務困難）給予額外給付＝不公平；因<b>機關方事由</b>所為處置＝合理。</li>
+      </ul>`,
+      qs:[
+        {n:9,law:"第6條",stem:"下列何者不會有違反採購法第6條第1項規定之虞？",
+         opts:["新臺幣50萬元之採購，指定廠牌公開徵求廠商提供報價單辦理決標","不適用條約協定之採購，限我國廠商投標","招標文件規定投標廠商須為製造廠之代理商","規定投標廠商須於招標機關之所在地轄區有實際工作經驗"],a:1,
+         ex:`(2) 不會違反。<span class="ans-hl">非條約協定採購，本得限我國廠商投標</span>（國貨優先），屬合法。(1) 指定廠牌、(3) 限代理商、(4) 限在地經驗，都涉嫌不當限制競爭。`,
+         mem:`「非條約協定→可限我國廠商」是合法的。`},
+        {n:10,law:"第6條",stem:"下列何者違反採購法第6條第1項公平合理原則？",
+         opts:["廠商履約期間因機關提前使用目的，採部分驗收，並於部分驗收後將相關履約保證金部分發還","機關無法順利取得廠商履約所需土地，通知廠商暫停履約，並暫時發還履約保證金","公開招標案件，履約期間因廠商財務困難，辦理契約變更，增列給付預付款，契約價金不變","道路工程得標廠商因法定工時縮短，要求延長工期，機關認為部分有理由，同意廠商之部分要求"],a:2,
+         ex:`(3) 違反。價金不變下，因<span class="ans-hl">廠商自身財務困難</span>而額外增列預付款，等於給該廠商特別優惠、損及其他投標者公平。(1)(2)(4) 都是因機關事由或合理事由的正當處置。`,
+         trap:`關鍵在「廠商自身財務困難」非機關事由，卻給予額外給付＝不公平。`}
+      ]
+    },
+    {
+      topic:"招標方式", law:"第18條",
+      memo:`<ul>
+        <li>選擇性招標：先<b>公告辦資格審查</b> → 再邀<b>所有</b>符合資格者投標。</li>
+        <li>限制性招標比價：邀請廠商比價，<b>有 2 家以上投標即可比價</b>（邀 4 家、2 家投標即可比）。</li>
+      </ul>`,
+      qs:[
+        {n:36,law:"第18條",stem:"下列敘述何者錯誤？",
+         opts:["採購法所稱選擇性招標，指以公告方式預先依一定資格條件辦理廠商資格審查後，再行邀請符合資格之廠商投標","機關辦理限制性招標，邀請4家廠商比價，有2家廠商投標者，即得比價","機關辦理選擇性招標，不得規定廠商應將規格與價格合併投標","機關為特定個案辦理選擇性招標，應於辦理廠商資格審查後，邀請所有符合資格之廠商投標"],a:2,
+         ex:`(3) 錯誤。並無「不得合併規格與價格投標」之限制；機關得視需要要求規格與價格合併或分段投標。`,
+         mem:`比價「2 家以上投標即可」；選擇性招標資格審查後邀「所有」合格廠商。`}
+      ]
+    },
+    {
+      topic:"限制性招標與契約變更", law:"第22條",
+      memo:`<ul>
+        <li><b>第6款（工程追加）</b>：原招標目的範圍內、未能預見、另行招標有重大不便/技術經濟困難、非洽原廠不能達目的，且<b>未逾原主契約金額 50%</b>。</li>
+        <li><b>「50%」＝追加「累計」金額 ÷「原主契約」金額</b>（不是當次、不是追加後）。</li>
+        <li>「追加契約以外之工程」＝新增項目<b>＋規格變更＋既有數量增加</b>，三者都算。</li>
+        <li><b>後續擴充</b>（已敘明期間/金額/數量）＝原案已涵蓋，<b>不是</b>另以限制性招標辦理（常見陷阱）。</li>
+        <li>22 條 3 款（緊急）≠ 特別採購；限制性招標仍應<b>優先比價</b>。</li>
+        <li>房地產採購訂底價時機＝<b>以上皆非</b>（依勘選/議價程序另定）。</li>
+      </ul>`,
+      qs:[
+        {n:43,law:"第22條",stem:"機關依採購法第22條第1項第6款辦理契約變更，下列何者錯誤？",
+         opts:["僅適用於工程採購","契約金額如包括機關支出及收入金額者，該條款所稱原主契約金額得以支出部分之金額計算之","該條款所稱「必須追加契約以外之工程」之情形，係指增加原契約外之工作項目，不包括原契約項目規格之變更或既有標的數量之增加","機關辦理契約變更致原決標金額增加者，該增加之金額應依採購法第61條或第62條規定辦理公告、彙送"],a:2,
+         ex:`(3) 錯誤。「必須追加契約以外之工程」除新增工作項目外，<span class="ans-hl">也包括原項目規格變更或既有數量增加</span>。`,
+         mem:`追加＝新增項目＋規格變更＋數量增加。`},
+        {n:44,law:"第22條",stem:"依「機關邀請或委託文化藝術專業人士機構團體提供藝文服務作業辦法」規定，機關辦理藝文服務採購，下列何者正確？",
+         opts:["應免收押標金、保證金","採公告審查程序者，審查委員會應由委員5人以上組成","巨額藝文服務採購不經公告審查程序辦理者，應由機關邀集機關人員2人及文化、藝術領域之專家學者7人開會審查，經三分之二以上人員出席，出席人員二分之一以上審查通過，簽報機關首長或其授權人員核准","以上皆是"],a:1,
+         ex:`(2) 正確。藝文服務採公告審查者，審查委員會 <span class="ans-hl">5 人以上</span>。(1) 是「得」免收非「應」免收；(3) 人數/比率與法定不符。`,
+         trap:`第44題正解＝委員會「5 人以上」；第45題正解＝「徵詢業者意見」。兩題都考藝文採購，別搞混。`},
+        {n:45,law:"第22條",stem:"機關辦理藝文服務採購，採公告審查程序者，下列何者正確？",
+         opts:["招標文件之內容應考量藝文服務之採購特性及實際需要，必要時得徵詢藝文業者之意見","審查委員會應由委員5人以上組成；其會議之決議應有委員總額三分之二以上出席，出席委員三分之二同意行之","公告結果，僅1家藝文業者投標者，不得進行審查","以上皆是"],a:0,
+         ex:`(1) 正確。招標文件得視需要<span class="ans-hl">徵詢藝文業者意見</span>。(2) 委員 5 人以上對，但「決議門檻」敘述有誤；(3) 僅 1 家投標「仍得」進行審查。`},
+        {n:47,law:"第22條",stem:"某鎮公所依採購法第22條第1項第3款辦理限制性招標採購，以下何者為正確？",
+         opts:["因採購案件為排水工程，可簽報機關首長或其授權人員通案核准","因屬緊急採購，僅逕洽某廠商議價即可，免優先洽2家廠商比價","不適用「特別採購招標決標處理辦法」","以上皆非"],a:2,
+         ex:`(3) 正確。22 條 1 項 3 款（緊急）的限制性招標，與「特別採購」是兩回事，<span class="ans-hl">不適用特別採購招標決標處理辦法</span>。(1) 應「個案」敘明；(2) 仍應優先洽 2 家以上比價。`,
+         mem:`22 條 3 款 ≠ 特別採購；限制性招標仍應「優先比價」。`},
+        {n:60,law:"第22條",stem:"下列敘述何者錯誤？",
+         opts:["採購法第22條第1項第2款所稱專屬權利，不包括商標專用權","採購法第22條第1項第1款所稱無合格標，指審標結果無廠商合於招標文件規定","採購法第22條第1項第6款所稱百分之五十，指追加當次金額占原主契約金額之比率","機關依採購法第22條第1項規定辦理限制性招標，其得以比價方式辦理者，優先以比價方式辦理"],a:2,
+         ex:`(3) 錯誤。6 款的 50% 是<span class="ans-hl">追加「累計」金額占「原主契約」金額</span>之比率，不是「當次」金額。`,
+         mem:`50% ＝ 累計 ÷ 原主契約。`},
+        {n:64,law:"第22條",stem:"機關依採購法第22條第1項第11款規定採購房地產，其訂有底價者，訂定底價之時機：",
+         opts:["辦理公告前","開標前","比價前","以上皆非"],a:3,
+         ex:`(4) 以上皆非。房地產採購的底價訂定時機依其勘選/議價程序另有規定，<span class="ans-hl">並非上述固定時點</span>。`,
+         trap:`一般採購底價在開標前定，但房地產採購是例外。`},
+        {n:69,law:"第22條",stem:"下列敘述何者錯誤？",
+         opts:["機關依採購法第22條第1項規定辦理限制性招標，應由需求、使用或承辦採購單位，就個案敘明符合各款之情形，簽報機關首長或其授權人員核准","機關辦理採購，其屬原有採購之後續擴充，且已於招標文件敘明擴充之期間、金額或數量者，得採限制性招標","採購法所稱共同投標，指2家以上之廠商共同具名投標，並於得標後共同具名簽約，連帶負履行採購契約之責","採購法第22條第1項第2款所稱專屬權利，不包括商標專用權"],a:1,
+         ex:`(2) 錯誤。後續擴充若已於招標文件敘明，屬<span class="ans-hl">原採購之延續、原招標時即已涵蓋</span>，並非「另以限制性招標辦理」的態樣。`,
+         trap:`後續擴充常被誤以為要走 22 條限制性招標，其實是原案涵蓋。`}
+      ]
+    },
+    {
+      topic:"未達公告金額採購", law:"第23・49條",
+      memo:`<ul>
+        <li>未達公告金額、逾公告金額 1/10：符合 22 條 1 項 16 款限制性招標者，經<b>簽報機關首長或授權人員核准</b>即可（非報上級、非主管機關認定）。</li>
+        <li>公開取得書面報價/企劃書（49 條）：公開於資訊網或公報，取得 <b>3 家以上</b>報價，擇符合需要者比價或議價。</li>
+      </ul>`,
+      qs:[
+        {n:72,law:"第23條",stem:"未達公告金額採購之招標，其金額逾公告金額十分之一者，依「中央機關未達公告金額採購招標辦法」規定，符合採購法第22條第1項第16款採限制性招標者，應經需求、使用或承辦採購單位就個案敘明邀請指定廠商比價或議價之適當理由，並經下列何程序，得採限制性招標？",
+         opts:["簽報機關首長或其授權人員核准","簽報主管機關認定","預算書敘明","報經上級機關核准"],a:0,
+         ex:`(1) 正確。經<span class="ans-hl">機關首長或其授權人員核准</span>即可，無須報主管機關或上級機關。`,
+         mem:`未達公告金額的限制性招標→首長核准搞定。`}
+      ]
+    },
+    {
+      topic:"統包", law:"第24條",
+      memo:`<ul>
+        <li>統包＝將<b>設計與施工</b>（或供應、安裝、一定期間維修）併於同一契約招標，<b>不含監造</b>。</li>
+        <li>統包<b>不得</b>依 22 條 1 項 9 款（評選專業/技術服務）辦理。</li>
+        <li>統包<b>＋最有利標</b> → 須報上級機關核准；單純統包則不必（見 198 題對照）。</li>
+        <li>共同投標協議書應於<b>投標時</b>檢附（非簽約時）。</li>
+      </ul>`,
+      qs:[
+        {n:74,law:"第24條",stem:"下列敘述何者正確？",
+         opts:["機關以統包併採最有利標決標方式辦理者，無需報經上級機關核准","統包採購不得依採購法第22條第1項第9款規定辦理","共同投標廠商應於簽約時檢附共同投標協議書","所稱統包，指將工程或財物採購中之設計、監造與施工、供應、安裝或一定期間之維修等併於同一採購契約辦理招標"],a:1,
+         ex:`(2) 正確。統包<span class="ans-hl">不得用 22 條 9 款</span>辦理。(1) 統包＋最有利標「須」報上級核准；(3) 協議書應於「投標時」檢附；(4) 統包是「設計與施工」併同，<span class="ans-hl">不含監造</span>。`,
+         trap:`(4) 多塞了「監造」就是錯。`}
+      ]
+    },
+    {
+      topic:"招標公告與刊登", law:"第27條",
+      memo:`<ul>
+        <li><b>得免刊登</b>政府採購公報：22 條 1 項 <b>15 款</b>之徵求公告（如獨家來源徵求）。</li>
+        <li><b>應刊登公報 1 日</b>並公開於採購網：22 條 1 項 <b>9 款公開評選</b>、決標公告等。</li>
+        <li>複數決標：俟全部項目決標後一次刊登決標公告。</li>
+        <li>記法：<b>15 款徵求＝免登；9 款評選＝要登</b>。</li>
+      </ul>`,
+      qs:[
+        {n:84,law:"第27條",stem:"下列採購之招標資訊之公告，何者依規定得免刊登政府採購公報？",
+         opts:["採購法第22條第1項第9款規定之公開評選","依採購法第22條第1項第15款規定之徵求公告","依採購法第61條規定之決標結果公告","採購法第102條第3項規定之廠商名稱與相關情形"],a:1,
+         ex:`(2) 得免刊登。15 款（如專屬權利、獨家供應之徵求公告）<span class="ans-hl">得免刊登公報</span>。(1)(3)(4) 均應刊登。`,
+         trap:`15 款徵求公告＝可免登；9 款公開評選＝要登。`},
+        {n:85,law:"第27條",stem:"下列政府採購資訊應刊登政府採購公報1日之公告，並公開於主管機關之政府採購資訊網站？",
+         opts:["採購法第22條第1項第13款規定之公告審查","採購法第22條第1項第9款規定之公開評選","採購法第34條第1項但書規定之公開說明或公開徵求廠商提供參考資料","採購法第49條公開取得書面報價或企劃書"],a:1,
+         ex:`(2) 正確。<span class="ans-hl">9 款公開評選</span>應刊登公報 1 日並公開於採購網。其餘選項屬不同公告管道。`,
+         mem:`此組屬「哪種公告登在哪」的細部對照，記「9 款評選一定登公報」為主。`}
+      ]
+    },
+    {
+      topic:"等標期（最大宗，務必背熟）", law:"第28條",
+      memo:`<p style="margin-bottom:8px;">公開招標（非 WTO、未提供電子領投標/公開閱覽）法定下限：</p>
+        <table>
+          <tr><th>採購金額級距</th><th>公開招標</th><th>選擇性招標(資格預審)</th></tr>
+          <tr><td>巨額</td><td><b>28 日</b></td><td><b>14 日</b></td></tr>
+          <tr><td>查核以上未達巨額</td><td><b>21 日</b></td><td>—</td></tr>
+          <tr><td>公告以上未達查核</td><td>14 日</td><td>10 日</td></tr>
+          <tr><td>未達公告金額</td><td>7 日</td><td>7 日</td></tr>
+        </table>
+        <ul style="margin-top:12px;">
+          <li>縮短規定：電子領標<b>縮 3 日/不少於 5 日</b>；電子投標<b>縮 2 日/不少於 5 日</b>；公開閱覽<b>縮 5 日/不少於 10 日</b>。</li>
+          <li>6 個月內重行/續行招標（內容未重大改變）：未達公告<b>不少於 3 日</b>、公告以上<b>不少於 7 日</b>（A=3、B=7）。</li>
+          <li>取消/暫停後重行招標可縮短：限<b>6 個月內</b>。</li>
+          <li>變更/補充招標文件應延長等標期；但非重大改變且<b>原定截止日前 5 日</b>通知者，得免延長。</li>
+          <li>後續階段邀標（42 條 2 項）：由<b>招標機關</b>合理訂定，但不少於 <b>7 日</b>。</li>
+        </ul>`,
+      qs:[
+        {n:89,law:"第28條",stem:"機關辦理非適用WTO政府採購協定之巨額採購公開招標，其等標期（未提供電子領投標及公開閱覽）不得少於幾日？",
+         opts:["28日","30日","21日","40日"],a:0,
+         ex:`巨額採購公開招標等標期不得少於 <span class="ans-hl">28 日</span>。`,mem:`巨額公開招標＝28 日。`},
+        {n:92,law:"第28條",stem:"機關於等標期截止前取消或暫停招標，並於取消或暫停後，且招標文件內容未經重大改變者，最多於多久期間內重行招標者，等標期得考量取消或暫停前已公告或邀標之日數，依原定期限酌予縮短？",
+         opts:["6個月內","3個月內","1年內","14日內"],a:0,
+         ex:`取消或暫停後<span class="ans-hl">6 個月內</span>重行招標，等標期得酌予縮短。`,mem:`重行招標縮短期＝6 個月內。`},
+        {n:94,law:"第28條",stem:"機關辦理採購，於招標前將招標文件稿辦理公開閱覽，且招標文件內容未經重大改變者，等標期得縮短A日。但縮短後不得少於B日？",
+         opts:["A=2日；B=5日","A=3日；B=5日","A=3日；B=7日","A=5日；B=10日"],a:3,
+         ex:`公開閱覽：等標期縮短 <span class="ans-hl">5 日</span>，縮後不少於 <span class="ans-hl">10 日</span>（A=5；B=10）。`,
+         mem:`公開閱覽＝縮 5、不少於 10。`},
+        {n:95,law:"第28條",stem:"機關辦理公開招標，依採購法第42條第2項規定辦理後續階段之邀標，其等標期由「機關」視需要合理訂定之。前開所列「機關」係指下列何者？",
+         opts:["招標機關","上級機關","主管機關","行政院"],a:0,
+         ex:`此處「機關」指<span class="ans-hl">招標機關</span>。`,mem:`後續階段邀標的「機關」＝招標機關。`},
+        {n:96,law:"第28條",stem:"機關辦理公開招標（未提供電子領投標及公開閱覽），依採購法第42條第2項規定，辦理後續階段之邀標，由機關視需要合理訂定之，但等標期不得少於幾日？",
+         opts:["3日","5日","7日","10日"],a:2,
+         ex:`後續階段邀標等標期不得少於 <span class="ans-hl">7 日</span>。`,mem:`後續階段邀標＝不少於 7 日。`},
+        {n:97,law:"第28條",stem:"機關辦理非適用WTO政府採購協定之採購公開招標，查核金額以上未達巨額金額之採購，其等標期（未提供電子領投標及公開閱覽）不得少於幾日？",
+         opts:["14日","21日","28日","35日"],a:1,
+         ex:`查核金額以上未達巨額之公開招標等標期不得少於 <span class="ans-hl">21 日</span>。`,
+         mem:`查核未達巨額＝21 日（巨額才 28）。`},
+        {n:101,law:"第28條",stem:"機關辦理採購，除我國締結之條約或協定另有規定者外，下列何種情形，經機關首長或其授權人員核准，其等標期得視案件特性及實際需要合理訂定，不適用招標期限標準規定？",
+         opts:["依採購法第22條以預先建立之合格廠商名單，邀請符合資格之廠商投標，於辦理廠商資格審查之文件中另有載明者","政府機關為商業性轉售或用於製造產品、提供服務以供轉售目的所為之採購、基於採購案件之特性或實際需要，有縮短等標期之必要者","採購原料、物料或農礦產品，其市場行情穩定者","採購標的屬廠商於市場普遍銷售且招標文件及投標文件內容簡單者"],a:3,
+         ex:`(4) 正確。標的<span class="ans-hl">市場普遍銷售且文件簡單</span>者，經首長核准得不適用招標期限標準。`,
+         mem:`「市場普遍銷售＋文件簡單」＝可不受期限標準限制。`},
+        {n:104,law:"第28條",stem:"機關辦理採購，於6個月內重行或續行招標且招標文件內容未經重大改變者，其等標期，未達公告金額之採購不得少於A日，公告金額以上之採購不得少於B日？",
+         opts:["A=2日；B=5日","A=3日；B=5日","A=3日；B=7日","A=5日；B=7日"],a:2,
+         ex:`6 個月內重行/續行招標：未達公告 <span class="ans-hl">不少於 3 日</span>、公告以上 <span class="ans-hl">不少於 7 日</span>（A=3；B=7）。`,
+         mem:`重行招標＝3 / 7。`},
+        {n:105,law:"第28條",stem:"機關辦理採購，於等標期截止前變更或補充招標文件內容者，應視需要延長等標期。前項變更或擴充，其非屬重大改變，且原定截止日前幾日公告或書面通知各廠商者，得免延長等標期？",
+         opts:["5日","7日","10日","14日"],a:0,
+         ex:`非重大改變且原定截止日前 <span class="ans-hl">5 日</span>通知者，得免延長等標期。`,
+         mem:`變更補充免延長＝截止前 5 日通知。`}
+      ]
+    },
+    {
+      topic:"押標金不發還／影響採購公正", law:"第31條",
+      memo:`<ul>
+        <li>押標金不發還情形：冒用/借用他人名義或證件投標、得標後拒不簽約、58 條標價偏低未提合理說明、容許他人借用本人名義投標等。</li>
+        <li>「影響採購公正之違反法令行為」含：50 條 1 項 <b>5 款</b>（投標文件重大異常關聯）、87～91 條構成要件等；但 <b>50 條 1 項 7 款不在此列</b>。</li>
+      </ul>`,
+      qs:[
+        {n:111,law:"第31條",stem:"採購法第31條第2項第7款「其他經主管機關認定有影響採購公正之違反法令行為者」之情形，下列何者為非？",
+         opts:["有採購法第50條第1項第5款情形","有採購法第50條第1項第7款情形","廠商或其代表人、代理人、受雇人或其他從業人員有採購法第87條、第90條或第91條規定構成要件事實之一","廠商或其代表人、代理人、受雇人或其他從業人員與受機關委託提供採購規劃、設計、審查、監造、專案管理或代辦採購廠商之人員，共同實施採購法第88條規定構成要件事實"],a:1,
+         ex:`(2) 為非。被認定影響採購公正者含 50 條 1 項<span class="ans-hl">「5 款」（重大異常關聯）</span>等，但「7 款」不在主管機關認定之列。`,
+         trap:`5 款 vs 7 款，差兩個數字。記「5 款（重大異常關聯）」會被認定。`}
+      ]
+    },
+    {
+      topic:"投標文件密封", law:"第33條",
+      memo:`<ul>
+        <li>投標文件須裝於<b>不透明</b>之信封/容器並密封（漿糊、膠水、膠帶、釘書針、繩索等皆可）。</li>
+        <li>用「<b>透明</b>」資料袋＝不合格；釘書針、紙箱（只要不透明）＝合格。</li>
+      </ul>`,
+      qs:[
+        {n:114,law:"第33條",stem:"某學校總務主任主持一開標案，經發現廠商之投標文件有下列何種情形時，應為不合格標？",
+         opts:["投標文件置於塑膠透明資料袋內並以膠帶密封者","投標文件置於不透明標封袋內並以釘書針封裝者","標封上標示廠商之名稱及地址","投標文件以不透明紙箱封裝"],a:0,
+         ex:`(1) 不合格。關鍵是「<span class="ans-hl">透明</span>」——投標文件須裝於不透明容器，透明袋無法達保密效果。(2)(4) 不透明容器、(3) 標示名稱地址，皆符合規定。`,
+         mem:`「透明」就出局；釘書針、紙箱只要不透明都可以。`}
+      ]
+    },
+    {
+      topic:"招標文件與底價保密", law:"第34條",
+      memo:`<ul>
+        <li>招標文件於<b>公告前</b>應保密。</li>
+        <li>底價於<b>開標後原則不公開</b>；機關<b>不得</b>於招標文件公告底價。</li>
+        <li>廠商企劃書等內容，決標後<b>仍應保密</b>（非免保密）。</li>
+      </ul>`,
+      qs:[
+        {n:117,law:"第34條",stem:"機關辦理採購，下列敘述何者正確？",
+         opts:["廠商之企劃書，決標後得免予保密","招標文件於公告前應予保密","開標後，除有特殊情形外，底價應予公開","機關得於招標文件中公告底價，但應報經上級機關核准"],a:1,
+         ex:`(2) 正確。<span class="ans-hl">招標文件公告前應保密</span>。(1) 企劃書決標後仍應保密；(3) 底價開標後原則「不」公開；(4) 不得於招標文件公告底價。`,
+         mem:`公告前保密；底價不公開；企劃書始終保密。`}
+      ]
+    },
+    {
+      topic:"投標廠商資格（基本 vs 特定）", law:"第36條",
+      memo:`<ul>
+        <li><b>基本資格（任何採購得訂）</b>：登記/設立證明、<b>加入工商團體</b>證明、製造供應承做能力、維修售後服務能力（與「提供標的有關」）；納稅證明、信用證明、財務報表（與「履約能力有關」）。</li>
+        <li><b>特定資格（限「特殊或巨額」採購）</b>：相當<b>經驗/實績</b>、相當<b>人力</b>、相當<b>財力</b>（資本額/權益）、符合<b>國際/國家品質管理驗證</b>文件。</li>
+        <li>「具有相當人力之證明」＝<b>特定資格</b>，不是基本資格（148 題陷阱）。</li>
+        <li>經驗/實績的「單次契約金額」或「累計金額」：機關得<b>擇一或併訂</b>。</li>
+        <li>特殊/巨額採購：可<b>同時</b>訂基本＋特定資格；資本額上限 <b>1/10</b>；實績年限 <b>5 年內</b>。</li>
+      </ul>`,
+      qs:[
+        {n:134,law:"第36條",stem:"下列何者屬「與提供招標標的有關」之投標廠商基本資格？",
+         opts:["具有相當財力證明","廠商依工業團體法或商業團體法加入工業或商業團體之證明","具有相當經驗或實績之證明","實收資本額"],a:1,
+         ex:`(2) 是「與提供招標標的有關」之基本資格。(1) 財力、(3) 經驗實績、(4) 實收資本額都是<span class="ans-hl">特定資格</span>，只限特殊或巨額採購才能訂。`,
+         mem:`加入工商團體＝基本資格；財力/實績/資本額＝特定資格。`},
+        {n:137,law:"第36條",stem:"有關投標廠商資格之敘述，何者為正確？",
+         opts:["「投標廠商資格與特殊或巨額採購認定標準」有關「經驗或實績」規定所稱「單次契約金額」或「累計金額」，招標機關得本於權責自行決定係擇一訂定或兩者俱訂","機關辦理特殊或巨額採購，得視案件特性及需要訂定特定資格者，不得同時訂定基本資格","票據交換機構於等標期內所出具之非拒絕往來戶或最近3年內無退票紀錄證明，方得為廠商信用之證明","「工廠登記證明文件」為投標廠商特定資格"],a:0,
+         ex:`(1) 正確。單次/累計金額得<span class="ans-hl">擇一或併訂</span>。(2) 特定與基本資格「得同時訂定」；(3) 期間敘述有誤；(4) 工廠登記是「基本資格」。`,
+         mem:`單次/累計可擇一可併訂；特殊巨額採購可同時訂基本＋特定。`},
+        {n:148,law:"第36條",stem:"下列何者不是機關辦理採購，得擇定之基本資格？",
+         opts:["廠商納稅之證明","廠商具有維修、維護或售後服務能力之證明","廠商具有製造、供應或承做能力之證明","具有相當人力之證明"],a:3,
+         ex:`(4) 不是基本資格。「具有相當人力之證明」屬<span class="ans-hl">特定資格</span>（限特殊或巨額採購）。(1)(2)(3) 均為基本資格。`,
+         trap:`人力＝特定資格，不是基本資格。`},
+        {n:149,law:"第36條",stem:"有關投標廠商資格之敘述，何者為正確？",
+         opts:["機關辦理特殊或巨額採購，得視採購案件之特性及實際需要，訂定投標廠商之基本資格","機關訂定投標廠商需具有相當財力之資格證明者，其範圍得包括實收資本額不低於招標標的預算金額之五分之二","機關辦理外國廠商得參與之採購，不得禁止大陸廠商投標","機關以廠商須有相當經驗或實績為特定資格者，其期間得限3年內者"],a:0,
+         ex:`(1) 正確。特殊或巨額採購除特定資格外，<span class="ans-hl">仍得訂定基本資格</span>。(2) 資本額比率上限為 1/10（非 2/5）；(3) 兩岸條例下得限制大陸廠商；(4) 實績期間限「5 年內」非 3 年。`,
+         mem:`特殊巨額可訂基本資格；資本額上限 1/10；實績年限 5 年。`},
+        {n:151,law:"第36條",stem:"下列何者係屬投標廠商之特定資格？",
+         opts:["所得稅或營業稅之納稅證明","公會會員證","曾完成與招標標的類似之製造、供應或承做之文件","具有符合國家品質管理之驗證文件"],a:3,
+         ex:`(4) 是特定資格。(1) 納稅證明、(2) 公會會員證、(3) 製造供應承做文件，都是<span class="ans-hl">基本資格</span>。`,
+         mem:`國際/國家品質管理驗證＝特定資格。`}
+      ]
+    },
+    {
+      topic:"外國條件比率", law:"第43條",
+      memo:`<ul><li>機關得要求採購國內貨品比率、技術移轉、投資、協助外銷等作為<b>採購評選項目</b>，但比率<b>不得逾 1/3</b>。</li></ul>`,
+      qs:[
+        {n:156,law:"第43條",stem:"機關辦理採購，除我國締結之條約或協定另有禁止規定者外，得於招標文件規定，要求投標廠商採購國內貨品比率、技術移轉、投資、協助外銷或其他類似條件，作為採購評選之項目，但其比率不得逾？",
+         opts:["百分之三","三分之一","百分之十","二分之一"],a:1,
+         ex:`(2) 三分之一。此類條件作為評選項目，比率上限為 <span class="ans-hl">1/3</span>。`,mem:`43 條＝1/3。`}
+      ]
+    },
+    {
+      topic:"底價訂定", law:"第46條",
+      memo:`<ul>
+        <li>公開招標<b>分段開標</b>：底價應於<b>「價格標」開標前</b>定（非資格審查後的下一階段）。</li>
+        <li>限制性招標議價：訂底價前應先參考廠商報價/估價單。</li>
+        <li>未達公告金額：得由承辦採購單位逕簽機關首長或授權人員核定。</li>
+      </ul>`,
+      qs:[
+        {n:158,law:"第46條",stem:"關於底價之訂定，下列敘述何者為錯誤？",
+         opts:["機關得基於技術、品質、功能、履約地、商業條款、評分或使用效益等差異，訂定不同之底價","未達公告金額之採購，得由承辦採購單位逕行簽報機關首長或其授權人員核定底價","限制性招標之議價，訂定底價前應先參考廠商之報價或估價單","公開招標採分段開標者，底價應於資格審查後之下一階段開標前定之"],a:3,
+         ex:`(4) 錯誤。分段開標的底價應於<span class="ans-hl">「價格標」開標前</span>訂定，而非「資格審查後之下一階段」（資格審查後可能還有規格標）。`,
+         mem:`分段開標→底價在「開價格標前」定。`}
+      ]
+    },
+    {
+      topic:"最有利標評選", law:"第56條",
+      memo:`<ul>
+        <li>最有利標以<b>不訂底價</b>為原則（這是它和最低標的關鍵差異，可<b>超底價決標</b>）。</li>
+        <li>價格納入評分者：所占總滿分比率<b>不得低於 20%、不得逾 50%</b>。</li>
+        <li>已訂明固定費用/費率者：機關<b>得規定也得不規定</b>廠商詳列組成內容（非「仍應」強制）。</li>
+        <li>簡報及現場詢答列為評選項目者，配分/權重<b>不得逾 20%</b>。</li>
+        <li>協商重行遞送：與協商無關之項目<b>不予評選，以「重行遞送前」內容為準</b>。</li>
+      </ul>`,
+      qs:[
+        {n:163,law:"第56條",stem:"依最有利標評選辦法規定，下列敘述何者錯誤？",
+         opts:["機關訂定評選項目、子項及其評審標準，不得以有利或不利於特定廠商為目的","序位，指評選委員會依招標文件所列評比項目之重要性或權重，評審廠商投標文件後所核給之序位","招標文件如已訂明固定費用或費率者，不得規定廠商須於投標文件內詳列組成該費用或費率之內容","總評分法中之總滿分，指招標文件所列各評選項目滿分之合計總分數"],a:2,
+         ex:`(3) 錯誤。已訂明固定費用/費率者，機關<span class="ans-hl">「得不」規定詳列（也可規定詳列）</span>，並非「不得」規定。`,
+         mem:`固定費率→詳列與否由機關決定。`},
+        {n:164,law:"第56條",stem:"機關依採購法第56條第1項及第57條採行協商措施，經洽請重行遞送投標文件者，重行遞送之投標文件，有與協商無關或不受影響之項目者，該項目？",
+         opts:["優於原投標文件者納入評選，低於原投標文件內容者，不納入評選","無論是否優於或低於原投標文件應不予評選，並以重行遞送前之內容為準","無論是否優於或低於原投標文件應納入評選，並以重行遞送之內容為準","優於原投標文件者不納入評選，低於原投標文件內容者，納入評選"],a:1,
+         ex:`(2) 正確。與協商「無關」的項目不因重行遞送改變評選，一律以<span class="ans-hl">「重行遞送前」內容</span>為準，避免廠商藉協商夾帶修改無關項目。`,
+         mem:`協商無關項目→看「協商前」原內容。`},
+        {n:165,law:"第56條",stem:"機關依「最有利標評選辦法」辦理最有利標評選，下列何者為錯誤？",
+         opts:["招標文件未訂明固定費用或費率，而由廠商於投標文件載明標價者，應規定廠商於投標文件內詳列報價內容，並納入評選","招標文件已訂明固定費用或費率者，得規定廠商於投標文件內詳列組成該費用或費率之內容，並納入評選","招標文件已訂明固定費用或費率者，仍應規定廠商於投標文件內詳列組成該費用或費率之內容，並納入評選","招標文件已訂明固定費用或費率者，得不規定廠商於投標文件內詳列組成該費用或費率之內容"],a:2,
+         ex:`(3) 錯誤。已訂明固定費率者，是「得規定」或「得不規定」（選項 2、4 都對），<span class="ans-hl">不是「仍應」強制詳列</span>。`,
+         mem:`同 163 題——固定費率，詳列是「選配」不是「必須」。`},
+        {n:166,law:"第56條",stem:"依最有利標評選辦法規定，價格納入評分者，其所占總滿分之比率不得低於？",
+         opts:["百分之二十","百分之三十","百分之五十","百分之六十"],a:0,
+         ex:`(1) 20%。價格納入評分時，所占比率<span class="ans-hl">不得低於 20%、不得逾 50%</span>。`,
+         mem:`價格評分區間 20%～50%。`},
+        {n:168,law:"第56條",stem:"下列敘述何者錯誤？",
+         opts:["評定最有利標涉及序位評比者，招標文件應載明各評比項目之權重","機關採最有利標決標，其訂有底價，而廠商報價逾底價須減價者，於採行協商措施時洽減之，不得有超底價決標情形","評定最有利標涉及序位評比者，應於招標文件載明序位評比結果不合格者，不得作為協商對象或最有利標","依最有利標評選辦法規定，招標文件未訂明固定費用或費率，而由廠商於投標文件載明標價者，應規定廠商於投標文件內詳列報價內容，並納入評選"],a:1,
+         ex:`(2) 錯誤。最有利標重視綜合效益，與最低標不同——縱使訂有底價，最有利標經規定/核准<span class="ans-hl">「得」超底價決標</span>，並非「不得有超底價決標情形」。`,
+         mem:`最有利標可超底價決標（與最低標的關鍵差異）。`}
+      ]
+    },
+    {
+      topic:"協商措施", law:"第57條",
+      memo:`<ul>
+        <li>採行協商措施者，其開標至審標作業<b>不予保密</b>（協商程序公開進行）。</li>
+        <li>但<b>不得</b>把甲廠商投標內容、優缺點、評分透露給其他廠商。</li>
+        <li>參與協商之廠商<b>得依協商結果修改投標文件</b>並重行遞送。</li>
+        <li>僅原招標文件已標示<b>得更改項目</b>之內容，始得納入協商。</li>
+      </ul>`,
+      qs:[
+        {n:172,law:"第57條",stem:"機關辦理採購，有關協商規定，下列敘述何者錯誤？",
+         opts:["依採購法第55條規定採行協商措施者，其採行協商措施前之開標至審標作業，依採購法規定應予保密","不得將協商廠商投標文件內容、優缺點及評分，透露予其他廠商","採行協商措施應執行保密措施","原招標文件已標示得更改項目之內容，始得納入協商"],a:0,
+         ex:`(1) 錯誤。採行協商措施者，其開標至審標作業依規定<span class="ans-hl">「不予保密」（協商程序公開進行）</span>。(2)(3)(4) 正確。`,
+         mem:`協商程序「公開」進行，但不得把甲廠商內容透露給乙廠商。`},
+        {n:173,law:"第57條",stem:"依採購法規定，招標文件規定得就特定項目採行協商措施時，下列何者為正確？",
+         opts:["以評選最優廠商為協商對象","審標程序公開進行","參與協商之廠商得依據協商結果修改投標文件","開標程序應公開"],a:2,
+         ex:`(3) 正確。參與協商的廠商<span class="ans-hl">得依協商結果修改投標文件</span>（並重行遞送）。(1) 協商對象不限最優 1 家；(2)(4) 表述非題目所要的標準答案。`,
+         trap:`172、173 兩題在「保密/公開」用語上易互相干擾，考前以正解記憶為主：協商可修改投標文件、不洩漏他商內容。`}
+      ]
+    },
+    {
+      topic:"標價偏低", law:"第58條",
+      memo:`<ul>
+        <li>總標價低於底價 <b>80%</b> → 偏低，得限期說明或要求差額保證金。</li>
+        <li>總標價低於底價 <b>70%</b> → 得不接受說明逕不決標。</li>
+        <li>重點：<b>總標價未偏低，但部分標價偏低者，仍適用 58 條</b>。</li>
+        <li>未提合理說明 → 不決標予該最低標，<b>以次低標為最低標</b>（不是逕廢標、不沒收押標金）。</li>
+      </ul>`,
+      qs:[
+        {n:175,law:"第58條",stem:"機關辦理採購，下列敘述何者正確？",
+         opts:["機關得於招標文件中規定廠商之標價有採購法第58條所稱標價偏低之情形時，即應繳納差額保證金","最低標廠商總標價在底價以內，但未低於底價之百分之八十，該最低標主動表示標價錯誤，要求不決標予該廠商，機關得予接受","最低標廠商總標價有採購法第58條所稱標價偏低之情形，得逕請廠商於5日內提出差額保證金，未提出者，不退還押標金","總標價未偏低但部分標價偏低者，仍適用採購法第58條規定"],a:3,
+         ex:`(4) 正確。即使總標價未偏低，只要<span class="ans-hl">「部分標價」偏低，仍適用 58 條</span>處理。(1) 是「先說明、必要時」才繳差額保證金非「即應」；(2)(3) 程序與效果敘述有誤。`,
+         mem:`部分標價偏低也適用 58 條。`}
+      ]
+    },
+    {
+      topic:"審標結果與決標通知", law:"第60條",
+      memo:`<ul>
+        <li>審標結果之通知：經廠商<b>請求</b>者，得以書面為之；最遲不得逾<b>決標或廢標日 10 日</b>。</li>
+        <li>決標結果公告：應於<b>決標日起 30 日</b>內刊登公報（非 20 日）。</li>
+        <li>契約變更致決標金額增加，仍應依 61/62 條辦決標公告。</li>
+        <li>51 條疑義「澄清」效果，<b>非</b>「視同放棄、不得為決標對象」（陷阱）。</li>
+      </ul>`,
+      qs:[
+        {n:178,law:"第60條",stem:"機關辦理採購，下列敘述何者正確？",
+         opts:["機關辦理採購依採購法第51條規定通知廠商說明，廠商未依通知期限辦理者，視同放棄，不得以該廠商為決標對象","機關辦理公告金額以上採購之招標，應於決標日起20日內，將決標結果之公告刊登於政府採購公報，並以書面通知各投標廠商","機關依招標文件規定審查廠商投標文件，其審查結果之通知，經廠商請求者，得以書面為之","機關辦理採購，其因契約變更致原決標金額增加新臺幣150萬元，如未另訂新契約者，免辦理決標公告"],a:2,
+         ex:`(3) 正確。審標結果之通知，經廠商<span class="ans-hl">「請求」者得以書面</span>為之。(1) 51 條澄清效果非「視同放棄」；(2) 決標公告為決標日起「30 日」非 20 日；(4) 契約變更增加金額仍應辦決標公告。`,
+         mem:`審標結果「應廠商請求」可書面；決標公告 30 日。`}
+      ]
+    },
+    {
+      topic:"綜合題", law:"綜合",
+      memo:`<ul>
+        <li>審標結果通知最遲＝<b>決標或廢標日 10 日</b>內。</li>
+        <li>查核金額以上須報上級核准：最有利標、減價收受、超底價 4% 以上決標。</li>
+        <li>單純<b>統包不必</b>報上級；統包<b>＋最有利標</b>才要報（因最有利標本身要報）。</li>
+      </ul>`,
+      qs:[
+        {n:191,law:"綜合",stem:"機關辦理採購，下列敘述何者正確？",
+         opts:["依採購法第51條規定通知廠商說明，廠商未依通知期限辦理者，視同放棄，不得以該廠商為決標對象","公告金額以上之招標，應於決標日起20日內，將決標結果之公告刊登於政府採購公報，並以書面通知各投標廠商","依招標文件規定審標，其審標結果之通知，應於審查結果完成後儘速通知，最遲不得逾決標或廢標日10日","未達公告金額採購之招標，其依採購法第49條規定採公開取得書面報價方式辦理因屬詢價性質，得依採購法第34條第1項但書規定辦理"],a:2,
+         ex:`(3) 正確。審標結果通知應儘速為之，<span class="ans-hl">最遲不得逾決標或廢標日 10 日</span>。(1) 同 178 題；(2) 決標公告為 30 日非 20 日；(4) 49 條公開取得仍須依規定公告。`,
+         mem:`審標結果通知最遲＝決標/廢標日 10 日內。`},
+        {n:198,law:"綜合",stem:"機關辦理查核金額以上之採購，下列何者屬無須報上級機關核准之事項？",
+         opts:["最有利標","減價收受","超過底價百分之四決標","統包方式辦理工程採購"],a:3,
+         ex:`(4) 無須報上級核准。單純「以統包方式辦理工程採購」屬機關權責；(1) 最有利標、(2) 減價收受、(3) 查核金額以上超底價 4% 以上決標，都須報上級核准。`,
+         trap:`對照 74 題：單純統包不必報，統包「併最有利標」才要報。`}
+      ]
+    }
+  ]
+}
+];
+
+const content = document.getElementById('content');
+const chipsRow = document.getElementById('chipsRow');
+const state = {};
+let total = 0;
+
+DATA.forEach(ch=>{
+  const qcount = ch.groups.reduce((s,g)=>s+g.qs.length,0);
+  total += qcount;
+
+  const chip = document.createElement('a');
+  chip.className='chip'; chip.href='#'+ch.id;
+  chip.innerHTML = ch.chapter+'<b>'+qcount+'</b>';
+  chipsRow.appendChild(chip);
+
+  const sec = document.createElement('section');
+  sec.className='chapter'; sec.id=ch.id;
+  sec.innerHTML = '<div class="chapter-head"><div class="chapter-num">'+ch.num+'</div>'+
+    '<div><div class="chapter-meta">'+ch.meta+'</div>'+
+    '<div class="chapter-title">'+ch.chapter+'</div></div></div>';
+
+  ch.groups.forEach(g=>{
+    const grp = document.createElement('div');
+    grp.className='group';
+    grp.innerHTML = '<div class="group-label"><h3>'+g.topic+'</h3>'+
+      '<span class="law-tag">'+g.law+'</span></div>'+
+      '<div class="memo"><div class="memo-title">速記</div>'+g.memo+'</div>';
+
+    g.qs.forEach(q=>{
+      const qid = ch.id+'-'+q.n;
+      const card = document.createElement('div');
+      card.className='q'; card.id='q-'+qid;
+
+      const optsHtml = q.opts.map((o,i)=>{
+        const cls = (i===q.a) ? 'opt correct' : 'opt wrong';
+        return '<li class="'+cls+'"><span class="onum">('+(i+1)+')</span><span>'+o+'</span></li>';
+      }).join('');
+
+      let foot = '<div class="explain"><div class="e-title">解題分析</div><p>'+q.ex+'</p>';
+      if(q.trap) foot += '<div class="trap"><b>陷阱　</b>'+q.trap+'</div>';
+      if(q.mem)  foot += '<div class="mem"><b>口訣</b><span>'+q.mem+'</span></div>';
+      foot += '</div>';
+
+      card.innerHTML =
+        '<div class="q-top">'+
+          '<div class="q-badge">'+q.n+'<small>'+q.law+'</small></div>'+
+          '<div class="q-stem">'+q.stem+'</div>'+
+          '<button class="q-mark" aria-label="標記為已掌握" title="標記為已掌握">✓</button>'+
+        '</div>'+
+        '<ul class="q-options">'+optsHtml+'</ul>'+
+        '<div class="reveal-zone"><button class="show-answer-btn">點此顯示正解與解析</button></div>'+
+        '<div class="q-foot">'+foot+'</div>';
+
+      grp.appendChild(card);
+
+      card.querySelector('.q-mark').addEventListener('click',()=>{
+        state[qid] = !state[qid];
+        card.classList.toggle('mastered', state[qid]);
+        updateProgress();
+      });
+      card.querySelector('.show-answer-btn').addEventListener('click',()=>{
+        card.classList.add('reveal');
+      });
+    });
+    sec.appendChild(grp);
+  });
+  content.appendChild(sec);
+});
+
+function updateProgress(){
+  const done = Object.values(state).filter(Boolean).length;
+  document.getElementById('pcount').textContent = done;
+  document.getElementById('pfill').style.width = (total? (done/total*100):0)+'%';
+}
+
+const selftestBtn = document.getElementById('selftestBtn');
+selftestBtn.addEventListener('click',()=>{
+  const on = document.body.classList.toggle('selftest');
+  selftestBtn.classList.toggle('active', on);
+  if(!on){
+    document.querySelectorAll('.q.reveal').forEach(c=>c.classList.remove('reveal'));
+  }
+});
+
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  for(const k in state) delete state[k];
+  document.querySelectorAll('.q.mastered').forEach(c=>c.classList.remove('mastered'));
+  updateProgress();
+});
+
+updateProgress();
+</script>
+</body>
+</html>
